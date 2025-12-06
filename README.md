@@ -1,36 +1,63 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Blackbeard Media Group Landing Page
 
-## Getting Started
+A premium Next.js 16 + Tailwind CSS landing page that showcases Blackbeard Media Groups AI-powered service catalog. The project uses the App Router, modern React patterns, and Tailwinds design tokens to deliver an immersive SaaS experience.
 
-First, run the development server:
+## Prerequisites
+
+- Node.js 20+
+- npm 10+
+
+## Local Development
+
+Install dependencies and start the dev server:
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Visit [http://localhost:3000](http://localhost:3000) to explore the site. Any change to files inside `app/` or `components/` will trigger hot reloads.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Production Build
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build
+npm run start
+```
 
-## Learn More
+The build step compiles the App Router bundle and the start command serves it with `next start` on port 3000.
 
-To learn more about Next.js, take a look at the following resources:
+## Docker Support
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+A multi-stage Dockerfile is provided for reproducible builds:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+# Build the image
+docker build -t bbm-web .
 
-## Deploy on Vercel
+# Run the container
+docker run --rm -p 3000:3000 bbm-web
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Docker Compose
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Use the included compose file to build and start the stack in one step:
+
+```bash
+docker compose up --build
+```
+
+This exposes the app on `http://localhost:3000` and sets `NODE_ENV=production` inside the container.
+
+## Useful Scripts
+
+| Script        | Description                            |
+| ------------- | -------------------------------------- |
+| `npm run dev` | Start the Next.js dev server           |
+| `npm run lint`| Run ESLint across the project          |
+| `npm run build` | Generate the production bundle       |
+| `npm run start` | Serve the production build           |
+
+## Environment Variables
+
+All content is currently static, but you can add runtime configuration by defining environment variables (for example, `NEXT_PUBLIC_ANALYTICS_ID`) and injecting them via `.env`, Docker `environment`, or your hosting provider.
