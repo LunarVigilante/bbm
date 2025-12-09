@@ -27,6 +27,7 @@ export default function ContactPage() {
           <p className="text-sm font-semibold text-text-primary">Direct Line</p>
           <div className="text-sm text-text-secondary">
             <p>Email: {COMPANY_INFO.email}</p>
+            <p>Phone: {COMPANY_INFO.phone}</p>
             <p>Response time &lt; 24 hours</p>
           </div>
         </div>

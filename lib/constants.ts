@@ -305,7 +305,7 @@ export const COMPANY_INFO: CompanyInfo = {
   name: "Blackbeard Media Group",
   tagline: "AI-powered solutions for modern businesses",
   email: "support@blackbeard.media",
-  phone: "+1 (555) 123-4567",
+  phone: "(203) 518-5002",
   copyright: "© 2025 Blackbeard Media Group. All rights reserved.",
   socialLinks: {
     twitter: "https://twitter.com/blackbeardmedia",
