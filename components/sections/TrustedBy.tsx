@@ -1,19 +1,24 @@
 "use client";
 
-import Image from "next/image";
+import {
+  Anthropic,
+  ElevenLabs,
+  Google,
+  Mistral,
+  OpenAI,
+  Perplexity,
+} from "@lobehub/icons";
 import { motion } from "framer-motion";
 
 import { Container } from "@/components/ui/Container";
 
-const LOGO_BASE = "https://cdn.jsdelivr.net/gh/gilbarbara/logos/logos/";
-
 const TECHNOLOGIES = [
-  { name: "OpenAI", file: "openai.svg", caption: "Reasoning + orchestration" },
-  { name: "Google Gemini", file: "google-gemini.svg", caption: "Multimodal insights" },
-  { name: "Anthropic", file: "anthropic.svg", caption: "Responsible guardrails" },
-  { name: "Perplexity", file: "perplexity.svg", caption: "Realtime research" },
-  { name: "Midjourney", file: "midjourney.svg", caption: "Creative direction" },
-  { name: "Mistral", file: "mistral-ai.svg", caption: "Edge deployments" },
+  { name: "OpenAI", Component: OpenAI, caption: "Reasoning + orchestration" },
+  { name: "Google Gemini", Component: Google, caption: "Multimodal insights" },
+  { name: "Anthropic", Component: Anthropic, caption: "Responsible guardrails" },
+  { name: "Perplexity", Component: Perplexity, caption: "Realtime research" },
+  { name: "ElevenLabs", Component: ElevenLabs, caption: "Voice synthesis" },
+  { name: "Mistral", Component: Mistral, caption: "Edge deployments" },
 ];
 
 export function TrustedBy() {
@@ -35,13 +40,7 @@ export function TrustedBy() {
           {TECHNOLOGIES.map((tech) => (
             <div key={tech.name} className="flex items-center gap-4 rounded-3xl border border-white/10 bg-white/5 p-4">
               <div className="flex h-12 w-20 items-center justify-center">
-                <Image
-                  src={`${LOGO_BASE}${tech.file}`}
-                  alt={`${tech.name} logo`}
-                  width={80}
-                  height={32}
-                  className="h-8 w-auto object-contain"
-                />
+                <tech.Component size={32} />
               </div>
               <div>
                 <p className="text-sm font-semibold text-text-primary">{tech.name}</p>
